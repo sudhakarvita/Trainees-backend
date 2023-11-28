@@ -41,6 +41,8 @@ router.get('/get/users', async (req, res) => {
   }
 });
 
+//user delete with id
+
 router.delete( '/user/deleteById/:id', async (req,res) =>{
   const User = await user.findByIdAndDelete( req.params.id)
   res.status(201).json(User)
