@@ -48,5 +48,12 @@ router.delete( '/user/deleteById/:id', async (req,res) =>{
   res.status(201).json(User)
 })
 
+//user update with id
+
+router.put( '/user/updateById/:id', async (req,res) =>{
+  const User = await user.findByIdAndUpdate( req.params.id,{ $set:req.body},{ new:true });
+  res.status(201).json(User)
+})
+
 
 module.exports = router;
