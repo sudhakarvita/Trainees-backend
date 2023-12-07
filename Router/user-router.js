@@ -17,6 +17,7 @@ router.post('/user/create', (req, res) => {
 });
 
 
+
 //user login
 
 router.post( '/user/login',cors(corsOptions), async(req,res) =>{
@@ -27,6 +28,7 @@ router.post( '/user/login',cors(corsOptions), async(req,res) =>{
     res.status(500).json('user login failed'); 
   }
 });
+
 
 
 //get all users
@@ -41,12 +43,23 @@ router.get('/get/users', async (req, res) => {
   }
 });
 
+
+//get user with id
+
+router.get( '/user/getById/:id', async(req,res) =>{
+  const User = await user.findById(req.params.id)
+  res.status(201).json(User)
+})
+
+
+
 //user delete with id
 
 router.delete( '/user/deleteById/:id', async (req,res) =>{
   const User = await user.findByIdAndDelete( req.params.id)
   res.status(201).json(User)
 })
+
 
 //user update with id
 
