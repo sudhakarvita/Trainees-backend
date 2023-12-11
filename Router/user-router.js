@@ -46,10 +46,14 @@ router.get('/get/users', async (req, res) => {
 
 //get user with id
 
-router.get( '/user/getById/:id', async(req,res) =>{
-  const User = await user.findById(req.params.id)
-  res.status(201).json(User)
-})
+router.get('/user/getById/:id', async (req, res) => {
+  try {
+    const User = await user.findById(req.params.id);
+    res.status(200).json(User);
+  } catch (error) {
+    res.status(500).json({ error: 'User not found' });
+  }
+});
 
 
 
